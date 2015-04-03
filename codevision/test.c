@@ -1,0 +1,41 @@
+#include<mega128.h>
+#include<delay.h>
+int d=0;
+int S;
+int A,D;
+void main(void){
+DDRB=0xff;
+DDRA=0x00;
+PORTA.2=1;
+PORTA.1=1;
+
+while (1) {
+    if (PINA.2==0 && S==1) {
+     
+    A++;
+     if (A>=8) { 
+      A=7; 
+     };
+     PORTB=A; 
+    S=0;
+    delay_ms(50);
+    };
+    if (PINA.2==1) {
+    S=1;
+    };
+    if (PINA.1==0 && D==1) {
+     
+    A--;
+     if (A<=0) { 
+      A=0; 
+     };
+     PORTB=A; 
+    D=0;
+    delay_ms(50);
+    };
+    if (PINA.1==1) {
+    D=1;
+    };
+    };
+
+}
